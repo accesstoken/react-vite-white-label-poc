@@ -1,35 +1,26 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import React from 'react';
+import {useConfig} from './config/ConfigProvider';
+import './App.css';
 
-function App() {
-  const [count, setCount] = useState(0)
+const App: React.FC = () => {
+    const config = useConfig();
 
-  return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
-}
+    if (!config) {
+        // Render a loading state if config hasn't loaded yet
+        return <div>Loading configuration...</div>;
+    }
 
-export default App
+    // Proceed with rendering once config is loaded
+    return (
+        <div className="App" style={{backgroundColor: config.bgColor}}>
+            <div style={{color: config.color}}>
+                <img src={`${config.logo}`} alt="Client Logo" height={200}/>
+                <h1>
+                    <span style={{color: "#333"}}>Welcome to </span>{config.title}!
+                </h1>
+            </div>
+        </div>
+    );
+};
+
+export default App;

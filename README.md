@@ -1,3 +1,33 @@
+# White Labeling with Vite, React, and TypeScript
+
+This project is a demo of white labeling, enabling dynamic theme and configuration changes. 
+To switch the demo for a specific client, follow these instructions:
+
+1. Find the `.env.example` file at the root of the project.
+2. Rename `.env.example` to `.env`. This file is where Vite will look to load your environment variables.
+3. Inside the `.env` file, the `VITE_CLIENT` variable dictates the client theme and configuration that the application will use. 
+
+This demo includes the following client options:
+- `DreamWorks`
+- `WaltDisney` (default)
+
+To add a new client:
+1. **Create a Configuration File**:
+- Go to the `src/config/clients` directory.
+- Add a new JSON file named after the client (e.g., `Pixar.json`). This file will contain the specific configuration for the client.
+
+2. **Add the Client's Logo**:
+- Place the client's logo image in the `public/` directory.
+
+3. **Update the Environment Variable**:
+- To switch the application theme to the newly added client, update the `VITE_CLIENT` variable in the `.env` file to match the new client's configuration file name (excluding the `.json` extension).
+
+That's it!
+
+
+
+<--- Below this line is the original README content --->
+
 # React + TypeScript + Vite
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
